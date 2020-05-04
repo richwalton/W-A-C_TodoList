@@ -23,7 +23,7 @@ let todoList = {
     todo.completed = !todo.toggleCompleted;
     this.displayTodos();
   }
-  // my solution to above function is set position and booleen for method - toggleCompleted(0, true/false) 
+  // my solution to the above function is set position and booleen for method - toggleCompleted(0, true/false) 
   // toggleCompleted: function(position, toggle) {
   //   this.todos[position].completed = toggle;
   //   this.displayTodos();
