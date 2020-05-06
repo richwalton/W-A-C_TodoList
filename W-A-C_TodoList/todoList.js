@@ -32,14 +32,32 @@ let todoList = {
     this.displayTodos();
   },
   toggleCompleted: function(position) {
-    let todo = this.todos[position];
-    todo.completed = !todo.toggleCompleted;
+    var todo = this.todos[position];
+    todo.completed = !todo.completed;
     this.displayTodos();
-  }
-  // my solution to the above function is set position and booleen for method - toggleCompleted(0, true/false) 
-  // toggleCompleted: function(position, toggle) {
-  //   this.todos[position].completed = toggle;
-  //   this.displayTodos();
-  // }
+  },
+  toggleAll: function() {
+    var totalTodos = this.todos.length;
+    var completedTodos = 0;
+
+    // get number of todos
+    for (var i = 0; i < totalTodos; i++) {
+      if (this.todos[i].completed === true) {
+        completedTodos++;
+      }
+    }
+    //Case 1 If everythings true, make everything false(unchecked).
+    if (completedTodos === totalTodos) {
+      for (var i = 0; i < totalTodos; i++) {
+        this.todos[i].completed = false;
+      }
+    //Case 2 Otherwise make everything true(checked) 
+    } else {
+      for (var i = 0; i < totalTodos; i++) {
+        this.todos[i].completed = true;
+      }
+    }
+    this.displayTodos();
+  } 
 };
 console.log(todoList.todos)
