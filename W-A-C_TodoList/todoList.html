@@ -7,24 +7,11 @@
 </head>
 <body>
   <h2>Todo List</h2>
-  <p>Todo list goes here</p>
-  <script src= "todoList.js" >
-    // let rich = {
-    //   name: "Rich",
-    //   sayName: function() {
-    //     console.log(this.name)
-    //   }
-    // }
-    //rich.sayName()
+  
+  <button onclick="handlers.displayTodos()" id="displayTodosButton">Display Todos</button>
 
-    // let todoList = {
-    //   todos: ["item 1", "item 1", "item 1"],
-    //   displayTodos: function(){
-    //     console.log("My Todos", this.todos)
-    //   }
-    // };
-    
-    // test
-  </script>
+  <button onclick="handlers.toggleAll()" id="toggleAllButton">Toggle All</button>
+
+  <script src= "todoList.js" ></script>
 </h2>
 </html>

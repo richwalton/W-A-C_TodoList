@@ -1,2 +1,2 @@
 # W-A-C_TodoList
-Practical Javascript - tutorial
+Practical Javascript 

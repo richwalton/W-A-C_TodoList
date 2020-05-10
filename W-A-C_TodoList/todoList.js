@@ -60,4 +60,24 @@ let todoList = {
     this.displayTodos();
   } 
 };
-console.log(todoList.todos)
+//* using 'Event listeners' more common now *//
+// var displayTodosButton = document.getElementById('displayTodosButton');
+// var toggleAllButton = document.getElementById('toggleAllButton');
+
+// displayTodosButton.addEventListener("click", function() {
+//   todoList.displayTodos();
+// })
+
+// toggleAllButton.addEventListener("click", function() {
+//   todoList.toggleAll();
+// })
+
+//*  using 'onclick' in html and a handler object -instructor *//
+handlers = {
+  displayTodos: function () {
+    todoList.displayTodos();
+  },
+  toggleAll: function () {
+    todoList.toggleAll();
+  },
+}
