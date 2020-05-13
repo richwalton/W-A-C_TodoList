@@ -1,0 +1,19 @@
+{
+  "name": "practical-javascript",
+  "version": "1.0.0",
+  "description": "Practical Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richwalton/W-A-C_TodoList.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richwalton/W-A-C_TodoList/issues"
+  },
+  "homepage": "https://github.com/richwalton/W-A-C_TodoList#readme"
+}
