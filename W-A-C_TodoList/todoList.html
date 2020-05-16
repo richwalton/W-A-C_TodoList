@@ -17,6 +17,9 @@
     input {
       margin-right: 4px;
     }
+    li {
+      padding-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -33,10 +36,7 @@
      <input id="changeTodoPositionInput" type="number">
      <input id="changeTodoTextInput" type="text">
    </div>
-   <div>
-    <button onclick="handlers.deleteTodo()">Delete todo</button>
-    <input id="deleteTodoPositionInput" type="number">
-   </div>
+   
    <div>
     <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
     <input id="toggleCompletedPositionInput" type="number">

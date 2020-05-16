@@ -21,27 +21,24 @@ let todoList = {
     
   },
   toggleAll: function() {
-    var totalTodos = this.todos.length;
-    var completedTodos = 0;
+    let totalTodos = this.todos.length;
+    let completedTodos = 0;
 
     // get number of todos
-    for (var i = 0; i < totalTodos; i++) {
-      if (this.todos[i].completed === true) {
+    this.todos.forEach(function(todo) {
+      if (todo.completed === true) {
         completedTodos++;
       }
-    }
-    //Case 1 If everythings true, make everything false(unchecked).
-    if (completedTodos === totalTodos) {
-      for (var i = 0; i < totalTodos; i++) {
-        this.todos[i].completed = false;
+    });
+    this.todos.forEach(function(todo) {
+      // Case 1 If everythings true, make everything false(unchecked)
+      if (completedTodos === totalTodos) {
+        todo.completed = false;
+      //Case 2 Otherwise make everything true(checked)   
+      } else {
+        todo.completed = true;
       }
-    //Case 2 Otherwise make everything true(checked) 
-    } else {
-      for (var i = 0; i < totalTodos; i++) {
-        this.todos[i].completed = true;
-      }
-    }
-  
+    });
   } 
 };
 //* using 'Event listeners' more common now and keeps seperation of concerns *//
@@ -57,7 +54,7 @@ let todoList = {
 // })
 
 //*  using 'onclick' in html and a handler object - as per instructor *//
-handlers = {
+let handlers = {
   addTodo: function() {
     var addTodoTextInput = document.getElementById('addTodoTextInput');
     todoList.addTodo(addTodoTextInput.value);
@@ -73,10 +70,8 @@ handlers = {
     changeTodoTextInput.value = '';
     view.displayTodos();
   },
-  deleteTodo: function() {
-    var deleteTodoPositionInput = document.getElementById('deleteTodoPositionInput');
-    todoList.deleteTodo(deleteTodoPositionInput.valueAsNumber);
-    deleteTodoPositionInput.value = '';
+  deleteTodo: function(position) {
+    todoList.deleteTodo(position);
     view.displayTodos();
   },
   toggleCompleted: function() {
@@ -95,28 +90,39 @@ let view = {
   displayTodos: function () {
     let todosUl = document.querySelector('ul');
     todosUl.innerHTML = '';
-    for (var i = 0; i < todoList.todos.length; i++) {
+    todoList.todos.forEach(function(todo, position) {
       let todoLi = document.createElement('li');
-      let todo = todoList.todos[i];
       let todoTextWithCompleation = '';
 
       if (todo.completed === true) {
-        todoTextWithCompleation = `(x) ${todo.todoText}`;
-      } else {
-        todoTextWithCompleation = `( ) ${todo.todoText}`;
-      }
+            todoTextWithCompleation = `(x) ${todo.todoText} `;
+          } else {
+            todoTextWithCompleation = `( ) ${todo.todoText} `;
+          }
 
+      todoLi.id = position;
       todoLi.textContent = todoTextWithCompleation;
+      todoLi.appendChild(this.createDeleteButton());
       todosUl.appendChild(todoLi);
-    }
-    
+    }, this);
   },
   createDeleteButton: function () {
     let deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
     deleteButton.className = 'deleteButton';
     return deleteButton;
+  },
+  setUpEvenetListeners: function () {
+  let todosUl = document.querySelector('ul');
 
+  todosUl.addEventListener('click', function (event) {
+    let elementClicked = event.target;
+
+    if (elementClicked.className === 'deleteButton') {
+      handlers.deleteTodo(parseInt(elementClicked.parentNode.id));
+    }
+  });
   }
+  
 };
-
+view.setUpEvenetListeners();
